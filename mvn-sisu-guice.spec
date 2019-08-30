@@ -4,7 +4,7 @@
 #
 Name     : mvn-sisu-guice
 Version  : 3.1.0
-Release  : 4
+Release  : 5
 URL      : https://repo1.maven.org/maven2/org/sonatype/sisu/sisu-guice/3.1.0/sisu-guice-3.1.0.jar
 Source0  : https://repo1.maven.org/maven2/org/sonatype/sisu/sisu-guice/3.1.0/sisu-guice-3.1.0.jar
 Source1  : https://repo.maven.apache.org/maven2/org/sonatype/sisu/sisu-guice/2.1.7/sisu-guice-2.1.7-noaop.jar
