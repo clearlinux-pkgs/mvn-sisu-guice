@@ -4,18 +4,21 @@
 #
 Name     : mvn-sisu-guice
 Version  : 3.1.0
-Release  : 6
+Release  : 7
 URL      : https://repo1.maven.org/maven2/org/sonatype/sisu/sisu-guice/3.1.0/sisu-guice-3.1.0.jar
 Source0  : https://repo1.maven.org/maven2/org/sonatype/sisu/sisu-guice/3.1.0/sisu-guice-3.1.0.jar
 Source1  : https://repo.maven.apache.org/maven2/org/sonatype/sisu/sisu-guice/2.1.7/sisu-guice-2.1.7-noaop.jar
 Source2  : https://repo.maven.apache.org/maven2/org/sonatype/sisu/sisu-guice/3.1.0/sisu-guice-3.1.0-no_aop.jar
 Source3  : https://repo1.maven.org/maven2/org/sonatype/sisu/sisu-guice/2.1.7/sisu-guice-2.1.7.jar
 Source4  : https://repo1.maven.org/maven2/org/sonatype/sisu/sisu-guice/2.1.7/sisu-guice-2.1.7.pom
-Source5  : https://repo1.maven.org/maven2/org/sonatype/sisu/sisu-guice/3.1.0/sisu-guice-3.1.0.pom
+Source5  : https://repo1.maven.org/maven2/org/sonatype/sisu/sisu-guice/2.9.4/sisu-guice-2.9.4-no_aop.jar
+Source6  : https://repo1.maven.org/maven2/org/sonatype/sisu/sisu-guice/2.9.4/sisu-guice-2.9.4.pom
+Source7  : https://repo1.maven.org/maven2/org/sonatype/sisu/sisu-guice/3.1.0/sisu-guice-3.1.0.pom
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : Apache-2.0
 Requires: mvn-sisu-guice-data = %{version}-%{release}
+Requires: mvn-sisu-guice-license = %{version}-%{release}
 
 %description
 No detailed description available
@@ -28,11 +31,22 @@ Group: Data
 data components for the mvn-sisu-guice package.
 
 
+%package license
+Summary: license components for the mvn-sisu-guice package.
+Group: Default
+
+%description license
+license components for the mvn-sisu-guice package.
+
+
 %prep
+%setup -q -n META-INF
 
 %build
 
 %install
+mkdir -p %{buildroot}/usr/share/package-licenses/mvn-sisu-guice
+cp LICENSE %{buildroot}/usr/share/package-licenses/mvn-sisu-guice/LICENSE
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/sonatype/sisu/sisu-guice/3.1.0
 cp %{SOURCE0} %{buildroot}/usr/share/java/.m2/repository/org/sonatype/sisu/sisu-guice/3.1.0/sisu-guice-3.1.0.jar
 
@@ -48,8 +62,14 @@ cp %{SOURCE3} %{buildroot}/usr/share/java/.m2/repository/org/sonatype/sisu/sisu-
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/sonatype/sisu/sisu-guice/2.1.7
 cp %{SOURCE4} %{buildroot}/usr/share/java/.m2/repository/org/sonatype/sisu/sisu-guice/2.1.7/sisu-guice-2.1.7.pom
 
+mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/sonatype/sisu/sisu-guice/2.9.4
+cp %{SOURCE5} %{buildroot}/usr/share/java/.m2/repository/org/sonatype/sisu/sisu-guice/2.9.4/sisu-guice-2.9.4-no_aop.jar
+
+mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/sonatype/sisu/sisu-guice/2.9.4
+cp %{SOURCE6} %{buildroot}/usr/share/java/.m2/repository/org/sonatype/sisu/sisu-guice/2.9.4/sisu-guice-2.9.4.pom
+
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/sonatype/sisu/sisu-guice/3.1.0
-cp %{SOURCE5} %{buildroot}/usr/share/java/.m2/repository/org/sonatype/sisu/sisu-guice/3.1.0/sisu-guice-3.1.0.pom
+cp %{SOURCE7} %{buildroot}/usr/share/java/.m2/repository/org/sonatype/sisu/sisu-guice/3.1.0/sisu-guice-3.1.0.pom
 
 
 %files
@@ -60,6 +80,12 @@ cp %{SOURCE5} %{buildroot}/usr/share/java/.m2/repository/org/sonatype/sisu/sisu-
 /usr/share/java/.m2/repository/org/sonatype/sisu/sisu-guice/2.1.7/sisu-guice-2.1.7-noaop.jar
 /usr/share/java/.m2/repository/org/sonatype/sisu/sisu-guice/2.1.7/sisu-guice-2.1.7.jar
 /usr/share/java/.m2/repository/org/sonatype/sisu/sisu-guice/2.1.7/sisu-guice-2.1.7.pom
+/usr/share/java/.m2/repository/org/sonatype/sisu/sisu-guice/2.9.4/sisu-guice-2.9.4-no_aop.jar
+/usr/share/java/.m2/repository/org/sonatype/sisu/sisu-guice/2.9.4/sisu-guice-2.9.4.pom
 /usr/share/java/.m2/repository/org/sonatype/sisu/sisu-guice/3.1.0/sisu-guice-3.1.0-no_aop.jar
 /usr/share/java/.m2/repository/org/sonatype/sisu/sisu-guice/3.1.0/sisu-guice-3.1.0.jar
 /usr/share/java/.m2/repository/org/sonatype/sisu/sisu-guice/3.1.0/sisu-guice-3.1.0.pom
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/mvn-sisu-guice/LICENSE
